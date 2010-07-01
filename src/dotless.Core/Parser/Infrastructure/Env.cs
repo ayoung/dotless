@@ -1,4 +1,6 @@
-﻿namespace dotless.Core.Parser.Infrastructure
+﻿using dotless.Core.Engine;
+
+namespace dotless.Core.Parser.Infrastructure
 {
     using System;
     using System.Collections.Generic;
@@ -12,7 +14,8 @@
         private Dictionary<string, Type> _functionTypes;
 
         public Stack<Ruleset> Frames { get; set; }
-        public bool Compress { get; set; }
+		  public bool Compress { get; set; }
+		  public ColorFormat ColorFormat { get; set; }
 
         public Env()
         {

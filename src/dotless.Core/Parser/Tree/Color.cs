@@ -1,3 +1,5 @@
+using dotless.Core.Engine;
+
 namespace dotless.Core.Parser.Tree
 {
     using System;
@@ -78,6 +80,7 @@ namespace dotless.Core.Parser.Tree
                     .ToArray();
             }
             Alpha = 1;
+
         }
 
         public Color(double red, double green, double blue, double alpha)
@@ -143,6 +146,12 @@ namespace dotless.Core.Parser.Tree
                              .Select(i => i.ToString("X2"))
                              .JoinStrings("")
                              .ToLowerInvariant();
+
+            if(env.ColorFormat == ColorFormat.Hex)
+            {
+                // ignore named color conversion
+                return hexString;
+            }
 
             if (env.Compress)
             {

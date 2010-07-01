@@ -1,3 +1,5 @@
+using dotless.Core.Engine;
+
 namespace dotless.Core
 {
     using Abstractions;
@@ -80,8 +82,9 @@ namespace dotless.Core
             if (configuration.CacheEnabled)
                 pandora.Service<ILessEngine>().Implementor<CacheDecorator>().Lifestyle.Transient();
 
-            pandora.Service<ILessEngine>().Implementor<LessEngine>().Parameters("compress").Set("minify-output").Lifestyle.Transient();
-            pandora.Service<bool>("minify-output").Instance(configuration.MinifyOutput);
+				pandora.Service<ILessEngine>().Implementor<LessEngine>().Parameters("compress").Set("minify-output").Parameters("hexColors").Set("color-format").Lifestyle.Transient();
+				pandora.Service<bool>("minify-output").Instance(configuration.MinifyOutput);
+				pandora.Service<ColorFormat>("color-format").Instance(configuration.ColorFormat);
 
             pandora.Service<IFileReader>().Implementor(configuration.LessSource);
         }

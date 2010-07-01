@@ -1,8 +1,10 @@
+
 namespace dotless.Core.configuration
 {
     using System;
     using System.Xml;
     using Loggers;
+    using Engine;
 
     public class XmlConfigurationInterpreter
     {
@@ -12,7 +14,8 @@ namespace dotless.Core.configuration
 
             dotlessConfiguration.MinifyOutput = GetBoolValue(section, "minifyCss") ?? dotlessConfiguration.MinifyOutput;
             dotlessConfiguration.CacheEnabled = GetBoolValue(section, "cache") ?? dotlessConfiguration.CacheEnabled;
-            dotlessConfiguration.Optimization = GetIntValue(section, "optimization") ?? dotlessConfiguration.Optimization;
+				dotlessConfiguration.Optimization = GetIntValue(section, "optimization") ?? dotlessConfiguration.Optimization;
+				dotlessConfiguration.ColorFormat = GetEnumValue<ColorFormat>(section, "colorFormat") ?? dotlessConfiguration.ColorFormat;
 
             var logLevel = GetStringValue(section, "log") ?? "default";
             switch (logLevel.ToLowerInvariant())
@@ -93,6 +96,21 @@ namespace dotless.Core.configuration
 
             if (!string.IsNullOrEmpty(value))
                 return Type.GetType(value);
+
+            return null;
+        }
+
+        private static T? GetEnumValue<T>(XmlNode section, string property) where T : struct
+        {
+            var attribute = section.Attributes[property];
+
+            if (attribute == null)
+                return null;
+
+            var value = attribute.Value;
+
+            if (!string.IsNullOrEmpty(value))
+            	return ((T) Enum.Parse(typeof (T), value));
 
             return null;
         }

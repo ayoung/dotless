@@ -61,6 +61,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColorFormatHexFixtureBase.cs" />
+    <Compile Include="Specs\ColorFormatFixture.cs" />
     <Compile Include="Specs\Compression\ColorsFixture.cs" />
     <Compile Include="Specs\Compression\CommentsFixture.cs" />
     <Compile Include="CompressedSpecFixtureBase.cs" />
@@ -111,7 +113,6 @@
     <Compile Include="Specs\StringsFixture.cs" />
     <Compile Include="Specs\RulesetsFixture.cs" />
     <Compile Include="Specs\WhitespaceFixture.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Config\ConfigurationFixture.cs" />
     <Compile Include="Unit\Response\CssResponceFixture.cs" />
     <Compile Include="HttpFixtureBase.cs" />
@@ -121,6 +122,9 @@
       <Project>{D7A24E58-68D0-4B10-A324-EA33C822FA56}</Project>
       <Name>dotless.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -14,8 +14,8 @@ namespace dotless.Compiler
 
             CacheEnabled = false;
             Web = false;
-            Watch = false;
-        }
+				Watch = false;
+		  }
 
         public bool Watch { get; set; }
         public bool Help { get; set; }

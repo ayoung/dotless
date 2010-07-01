@@ -3,6 +3,7 @@ namespace dotless.Core.configuration
     using System;
     using Input;
     using Loggers;
+    using Engine;
 
     public class DotlessConfiguration
     {
@@ -21,6 +22,7 @@ namespace dotless.Core.configuration
             Logger = null;
             LogLevel = LogLevel.Error;
             Optimization = 1;
+				ColorFormat = ColorFormat.Named;
         }
 
         public DotlessConfiguration(DotlessConfiguration config)
@@ -32,6 +34,7 @@ namespace dotless.Core.configuration
             Logger = null;
             LogLevel = config.LogLevel;
             Optimization = config.Optimization;
+				ColorFormat = config.ColorFormat;
         }
 
         public bool MinifyOutput { get; set; }
@@ -40,6 +43,7 @@ namespace dotless.Core.configuration
         public bool Web { get; set; }
         public Type Logger { get; set; }
         public LogLevel LogLevel { get; set; }
-        public int Optimization { get; set; }
-    }
+		  public int Optimization { get; set; }
+		  public ColorFormat ColorFormat { get; set; }
+	 }
 }
